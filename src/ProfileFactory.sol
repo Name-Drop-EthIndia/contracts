@@ -7,7 +7,7 @@ import { IProfileNft } from "./interfaces/IProfileNft.sol";
 contract ProfileFactory {
     error NotMinted();
 
-    event ProfileMinted(address indexed profileAddress, address indexed owner, string indexed uri);
+    event ProfileMinted(address indexed profileAddress, address indexed owner, string uri);
 
     // address public i_router;
     address public i_linkAddress;

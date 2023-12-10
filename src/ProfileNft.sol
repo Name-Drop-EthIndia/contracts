@@ -22,7 +22,7 @@ contract ProfileNft is ERC721, Ownable, IERC721Receiver {
         uint256 eventId;
     }
 
-    event MomentMinted(address indexed profile2, uint256 indexed eventId);
+    event MomentMinted(address indexed profile2, uint256 indexed eventId, uint256 indexed tokenId);
 
     string public s_uri;
     uint256 public tokenId;
@@ -56,7 +56,7 @@ contract ProfileNft is ERC721, Ownable, IERC721Receiver {
         tokenIdToMoment[tokenId] =
             Moment({ userA: address(this), userB: toAddress, createdAt: uint64(block.timestamp), eventId: eventId });
         i_factory.makeConnection(toAddress, sig, eventId);
-        emit MomentMinted(toAddress, eventId);
+        emit MomentMinted(toAddress, eventId, tokenId);
     }
 
     function mintFromFactory(address toAddress, bytes calldata sig, uint256 eventId) external onlyFactory {
@@ -68,7 +68,7 @@ contract ProfileNft is ERC721, Ownable, IERC721Receiver {
             Moment({ userA: address(this), userB: toAddress, createdAt: uint64(block.timestamp), eventId: eventId });
         tokenId++;
         _safeMint(toAddress, tokenId);
-        emit MomentMinted(toAddress, eventId);
+        emit MomentMinted(toAddress, eventId, tokenId);
     }
 
     function hashOfSig(address toAddress) public pure returns (bytes32) {

@@ -8,12 +8,12 @@ import { HelpersConfig } from "./helpers/HelpersConfig.s.sol";
 
 contract CreateProfile is Script {
 
-        string uri = "https://github.com/nightfallsh4";
+        string uri = "ipfs://ldanfjsdnfsdnljmalkm";
     string name = "0xnightfall.eth";
     string symbol = "sh4";
 
     function run()  external returns (address){
-        ProfileFactory factory = ProfileFactory(0x5d9c4b42022D50629FB86fDB993d1d95f550B3B0);
+        ProfileFactory factory = ProfileFactory(0xF831f7693d3F5997816eD4c809D1A41cFc860C1b);
         vm.startBroadcast();
         address profileAddress = factory.createProfile(name,symbol,uri);
         vm.stopBroadcast();
